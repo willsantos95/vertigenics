@@ -108,20 +108,20 @@ function handleSubmit(event) {
     }
 }
 
-// Countdown Timer
+// Countdown Timer - 5 Minutes
 function startCountdown() {
     const countdownTimer = setInterval(() => {
         const now = new Date().getTime();
-        // Set deadline to 24 hours from now
-        const deadline = new Date(now + 24 * 60 * 60 * 1000).getTime();
+        // Set deadline to 5 minutes from now
+        const deadline = new Date(now + 5 * 60 * 1000).getTime();
 
         const timeRemaining = deadline - now;
 
-        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        // Set hours to 00 since we only have 5 minutes
+        document.getElementById('hours').textContent = '00';
         document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
         document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
