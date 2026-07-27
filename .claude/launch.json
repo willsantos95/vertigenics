@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vertigenics-preview",
+      "runtimeExecutable": "docker",
+      "runtimeArgs": ["run", "--rm", "-p", "8080:80", "-v", "${workspaceFolder}:/usr/share/nginx/html", "nginx:alpine", "sh", "-c", "cp /usr/share/nginx/html/nginx.conf /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"],
+      "port": 8080,
+      "url": "http://localhost:8080"
+    }
+  ]
+}
