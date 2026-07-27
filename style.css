@@ -402,6 +402,21 @@ a {
     color: #333;
 }
 
+.ingredients-showcase {
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.ingredients-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    animation: slideInUp 0.8s ease;
+}
+
 .ingredients-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -443,6 +458,19 @@ a {
     font-size: 2.5rem;
     margin-bottom: 50px;
     color: #333;
+}
+
+.results-showcase {
+    margin-bottom: 60px;
+}
+
+.results-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    animation: slideInUp 0.8s ease;
 }
 
 .testimonials {
@@ -492,7 +520,7 @@ a {
 }
 
 .guarantee-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -500,6 +528,7 @@ a {
     font-size: 4rem;
     display: block;
     margin-bottom: 20px;
+    animation: bounce 1s ease-in-out infinite;
 }
 
 .guarantee h2 {
@@ -517,6 +546,24 @@ a {
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.certifications-showcase {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.certifications-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideInUp 0.8s ease;
+    background: white;
+    padding: 20px;
 }
 
 /* PRICING SECTION */
@@ -909,6 +956,17 @@ a {
     from {
         opacity: 0;
         transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
     }
     to {
         opacity: 1;
