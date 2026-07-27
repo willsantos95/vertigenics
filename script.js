@@ -1,3 +1,58 @@
+// Cookie Management
+function initCookieConsent() {
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('acceptCookies');
+    const declineBtn = document.getElementById('declineCookies');
+
+    // Check if user has already accepted cookies
+    if (localStorage.getItem('vertigenics_cookies_accepted')) {
+        cookieBanner.classList.add('hidden');
+        return;
+    }
+
+    // Accept cookies and redirect to affiliate link
+    acceptBtn.addEventListener('click', () => {
+        // Set cookie acceptance in localStorage
+        localStorage.setItem('vertigenics_cookies_accepted', 'true');
+
+        // Set actual cookies for tracking
+        document.cookie = "vertigenics_consent=accepted; path=/; max-age=" + (365 * 24 * 60 * 60);
+        document.cookie = "vertigenics_timestamp=" + new Date().getTime() + "; path=/; max-age=" + (365 * 24 * 60 * 60);
+
+        // Track the action
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'cookie_consent', {
+                'consent_status': 'accepted'
+            });
+        }
+
+        // Hide banner with animation
+        cookieBanner.style.animation = 'slideDown 0.5s ease reverse';
+        setTimeout(() => {
+            cookieBanner.classList.add('hidden');
+            // Redirect to affiliate link after banner closes
+            window.location.href = 'https://getmyvertigenics24.com/text.php#aff=willsantos95';
+        }, 500);
+    });
+
+    // Decline cookies
+    declineBtn.addEventListener('click', () => {
+        localStorage.setItem('vertigenics_cookies_declined', 'true');
+        document.cookie = "vertigenics_consent=declined; path=/; max-age=" + (365 * 24 * 60 * 60);
+
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'cookie_consent', {
+                'consent_status': 'declined'
+            });
+        }
+
+        cookieBanner.style.animation = 'slideDown 0.5s ease reverse';
+        setTimeout(() => {
+            cookieBanner.classList.add('hidden');
+        }, 500);
+    });
+}
+
 // Scroll to Order Form
 function scrollToForm() {
     const formSection = document.getElementById('orderForm');
@@ -97,6 +152,9 @@ function trackCTAClick() {
 
 // Add click tracking to all CTA buttons
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize cookie consent
+    initCookieConsent();
+
     // Start countdown timer
     startCountdown();
 
